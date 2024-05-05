@@ -4,8 +4,10 @@ const {open} = require('sqlite');
 const sqlite3 = require('sqlite3');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const dbPath = path.join(__dirname,"eCommerce.db");
@@ -17,7 +19,7 @@ const initalizeDBAndServer = async() => {
             filename: dbPath,
             driver: sqlite3.Database
         });
-        app.listen(5000,() => {console.log("server is running at http://localhost:5000")});
+        app.listen(5001,() => {console.log("server is running at http://localhost:5001")});
     }catch(error){
         console.log(`DB Error ${error}`);
     }
